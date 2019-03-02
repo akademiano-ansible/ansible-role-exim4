@@ -1,0 +1,3 @@
+{% for key, value in exim4_system_aliases.iteritems() %}
+{{ key }}: {{ value }}@{{ exim4_mailname }}
+{% endfor %}

@@ -2,9 +2,10 @@
 
 exim4_package_name: exim4-daemon-light  # exim4-daemon-heavy
 exim4_mailname: "{{ ansible_fqdn }}"
+#exim4_dc_postmaster:
 
 exim4_dc_eximconfig_configtype: internet
-exim4_dc_other_hostnames: "{{ ansible_hostname }}"
+exim4_dc_other_hostnames: ''
 exim4_dc_local_interfaces: '127.0.0.1 ; ::1'
 exim4_dc_readhost: ''
 exim4_dc_relay_domains: ''
@@ -28,6 +29,8 @@ exim4_conf_values: false
 
 exim4_features_enable: []
 exim4_features_disable: []
+
+exim4_system_aliases: []
 
 exim4_logrotate_base:
   - name: exim4-base

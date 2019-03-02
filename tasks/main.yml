@@ -1,11 +1,11 @@
 ---
 
 - name: Install Exim4 package and ssl-cert
-  action: apt
-  args:
-    name: "{{ item }}"
-    state: present
-  with_items:
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
     - "{{ exim4_package_name }}"
     - ssl-cert
   tags:
@@ -135,3 +135,19 @@
   tags:
     - exim4
     - exim4-dkim
+
+- name: Set default email-addresses from address
+  template:
+    src: email-addresses.j2
+    dest: "/etc/email-addresses"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Set default aliases from address
+  template:
+    src: aliases.j2
+    dest: "/etc/aliases"
+    owner: root
+    group: root
+    mode: 0644
